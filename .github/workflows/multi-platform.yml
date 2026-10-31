@@ -37,8 +37,10 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Build the mod
-        uses: maurireal/build-geode-mod@main
+        uses: geode-sdk/build-geode-mod@main
         with:
+          sdk: "nightly"
+          cli: "nightly"
           bindings: geode-sdk/bindings
           bindings-ref: main
           combine: true
@@ -50,7 +52,7 @@ jobs:
     needs: ['build']
 
     steps:
-      - uses: maurireal/build-geode-mod/combine@main
+      - uses: geode-sdk/build-geode-mod/combine@main
         id: build
 
       - uses: actions/upload-artifact@v4
